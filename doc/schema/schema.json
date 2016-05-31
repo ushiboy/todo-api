@@ -1,0 +1,156 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "todo": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Todo",
+      "description": "todo api",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of todo",
+          "readOnly": true,
+          "example": 10001,
+          "type": [
+            "string"
+          ]
+        },
+        "title": {
+          "description": "title of todo",
+          "example": "task",
+          "type": [
+            "string"
+          ]
+        },
+        "completed": {
+          "description": "state of todo",
+          "example": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "created_at": {
+          "description": "when todo was created",
+          "example": "2016-05-31T14:30:44.064Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when todo was updated",
+          "example": "2016-05-31T14:30:44.064Z",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new todo.",
+          "href": "/api/todos",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "title": {
+                "$ref": "#/definitions/todo/definitions/title"
+              },
+              "completed": {
+                "$ref": "#/definitions/todo/definitions/completed"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Info for existing todo.",
+          "href": "/api/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fid)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing todos.",
+          "href": "/api/todos",
+          "method": "GET",
+          "targetSchema": {
+            "properties": {
+              "todos": {
+                "items": {
+                  "$ref": "#/definitions/todo"
+                },
+                "type": [
+                  "array"
+                ]
+              }
+            }
+          },
+          "rel": "self",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing todo.",
+          "href": "/api/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fid)}",
+          "method": "PUT",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "title": {
+                "$ref": "#/definitions/todo/definitions/title"
+              },
+              "completed": {
+                "$ref": "#/definitions/todo/definitions/completed"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        },
+        {
+          "description": "Delete an existing todo.",
+          "href": "/api/todos/{(%23%2Fdefinitions%2Ftodo%2Fdefinitions%2Fid)}",
+          "method": "DELETE",
+          "mediaType": "null",
+          "rel": "destroy",
+          "title": "Delete"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/todo/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/todo/definitions/title"
+        },
+        "completed": {
+          "$ref": "#/definitions/todo/definitions/completed"
+        },
+        "created_at": {
+          "$ref": "#/definitions/todo/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/todo/definitions/updated_at"
+        }
+      }
+    }
+  },
+  "properties": {
+    "todo": {
+      "$ref": "#/definitions/todo"
+    }
+  }
+}
