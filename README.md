@@ -1,3 +1,3 @@
 # Todo API
 
-[REST API spec](./doc/schema/schema.md)]
+[REST API spec](./doc/schema/schema.md)
